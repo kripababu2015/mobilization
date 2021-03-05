@@ -46,6 +46,7 @@
                             <option></option>
                             <option value="<?php echo $row1->disid;?>"><?php echo $row1->disname;?></option>
                             
+                            
                              <?php
                     }
                   }
@@ -67,6 +68,7 @@
       ?>        
                            <option></option>
                             <option value="<?php echo $row1->pid;?>"><?php echo $row1->pname;?></option>
+
                             <!-- <option value="" class="text-dark">YuvaKeralam</option>
                             <option value="">DDU-GKY</option> -->
                              <?php
@@ -90,7 +92,10 @@
       ?>        
                
                             <option ></option>
-                            <option value="<?php echo $row1->cid;?>"><?php echo $row1->cname;?></option>
+                            <option value="<?php echo $row1->cid;?>"><?php echo $row1->cname;?>
+                             <!--  <input type="hidden" name="coursename" value="<?php echo $row1->cname;?>"> -->
+                            </option>
+
 
                   <?php
                     }
@@ -108,9 +113,9 @@
                           <!-- <input type="text" class="form-control"> -->
                             <select name="gender" class="form-control">
                                 <option value=""></option>
-                                <option value="">Male</option>
-                                <option value="" class="text-dark">Female</option>
-                                <option value="">Others</option>
+                                <option value="male">Male</option>
+                                <option value="female" class="text-dark">Female</option>
+                                <option value="other">Others</option>
                                 <!-- <option value="" class="text-dark">Coorporation</option> -->    
                             </select>
                         </div>
@@ -121,8 +126,8 @@
                           <!-- <input type="text" class="form-control"> -->
                             <select name="kudumbasree" class="form-control">
                                 <option value=""></option>
-                                <option value="" class="text-dark">Yes</option>
-                                <option value="">No</option>
+                                <option value="Yes" class="text-dark">Yes</option>
+                                <option value="No">No</option>
                             </select>
                         </div>
                       </div>
@@ -134,8 +139,8 @@
                           <!-- <input type="text" class="form-control"> -->
                           <select name="aplbpl" class="form-control">
                             <option value=""></option>
-                            <option value="" class="text-dark">BPL</option>
-                            <option value="">APL</option>  
+                            <option value="BPL" class="text-dark">BPL</option>
+                            <option value="APL">APL</option>  
                           </select>
                         </div>
                       </div>
@@ -145,10 +150,10 @@
                           <!-- <input type="text" class="form-control"> -->
                           <select name="religion" class="form-control">
                             <option value=""></option>
-                            <option value="" class="text-dark">Hindu</option>
-                            <option value="">Muslim</option>
-                            <option value="" class="text-dark">Christain</option>
-                            <option value="">Others</option>
+                            <option value="Hindu" class="text-dark">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Christain" class="text-dark">Christain</option>
+                            <option value="Others">Others</option>
                           </select>
                         </div>
                       </div>
@@ -158,9 +163,9 @@
                           <!-- <input type="text" class="form-control"> -->
                           <select name="category" class="form-control">
                             <option value=""></option>
-                            <option value="" class="text-dark">General</option>
-                            <option value="">SC</option>
-                            <option value="" class="text-dark">ST</option>    
+                            <option value="General" class="text-dark">General</option>
+                            <option value="SC">SC</option>
+                            <option value="ST" class="text-dark">ST</option>    
                           </select>
                         </div>
                       </div>
@@ -172,10 +177,10 @@
                           <!-- <input type="text" class="form-control"> -->
                           <select name="caste" class="form-control">
                             <option value=""></option>
-                            <option value="" class="text-dark">Ezhava</option>
-                            <option value="">Nair</option>
-                            <option value="" class="text-dark">Brahimin</option>
-                            <option value="">Others</option>
+                            <option value="Ezhava" class="text-dark">Ezhava</option>
+                            <option value="Nair">Nair</option>
+                            <option value="Brahimin" class="text-dark">Brahimin</option>
+                            <option value="Others">Others</option>
                           </select>
                         </div>
                       </div>
@@ -187,8 +192,8 @@
                             <textarea class="form-control" rows="5"></text area>--->
                               <select name="mgnreg" class="form-control">
                                 <option value=""></option>
-                                <option value="" class="text-dark">Yes</option>
-                                <option value="">No</option>
+                                <option value="Yes" class="text-dark">Yes</option>
+                                <option value="No">No</option>
                                 
                               </select>
                          </div>
@@ -199,10 +204,10 @@
                           <!-- <input type="text" class="form-control"> -->
                             <select name="panchayth" class="form-control">
                                 <option value=""></option>
-                                <option value="">Panchayath</option>
-                                <option value="" class="text-dark">Municipality</option>
-                                <option value="">Urban</option>
-                                <option value="" class="text-dark">Coorporation</option>    
+                                <option value="Panchayath">Panchayath</option>
+                                <option value="Municipality" class="text-dark">Municipality</option>
+                                <option value="Urban">Urban</option>
+                                <option value="Coorporation" class="text-dark">Coorporation</option>    
                             </select>
                         </div>
                       </div>

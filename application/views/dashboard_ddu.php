@@ -1,14 +1,4 @@
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
 
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +8,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="icon" type="image/png" href="<?php echo base_url()?>admin/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-   Admin Dashboard
+   Mobilization
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -31,30 +21,31 @@ The above copyright notice and this permission notice shall be included in all c
 
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/index_style.css');?>" media="all"/>
 </head>
-
+<!-- /*******************
+*@function name:dashboard_ddu
+*@function:ddu dashboard viewing
+*@Author:keerthi
+*@date:05/03/2021
+*******************/ -->
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
+    
       <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
           ADMIN DDU-GKY
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav ">
           <li class="nav-item active ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="<?php echo base_url()?>Main/admin">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+            <a class="nav-link" href="#">
               <i class="material-icons">bubble_chart</i>
-              <p>Target</p>
+             <p>Target</p>
             </a>
 
               <ul class="nav ">
@@ -67,14 +58,14 @@ The above copyright notice and this permission notice shall be included in all c
                 </li>
 
                 <li class="nav-item  ">
-                  <a class="nav-link" href="./user.html">
+                  <a class="nav-link" href="<?php echo base_url()?>Main/addcourse_target">
                    <i class="material-icons">bubble_chart</i>
                     <p>Add Course-Target</p>
                   </a>
                 </li>
 
                 <li class="nav-item  ">
-                  <a class="nav-link" href="">
+                  <a class="nav-link" href="<?php echo base_url()?>Main/adddistrict_target">
                    <i class="material-icons">bubble_chart</i>
                     <p>Add District-Target</p>
                   </a>
@@ -83,7 +74,7 @@ The above copyright notice and this permission notice shall be included in all c
 
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="#">
               <i class="material-icons">content_paste</i>
               <p>Add District</p>
             </a>
