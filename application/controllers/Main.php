@@ -90,10 +90,20 @@ class Main extends CI_Controller {
 *@Author:nikhila
 *@date:04/03/2021
 *******************/
-	public function staff_dashboard_ddu()
-	{
-		$this->load->view('staff_dashboard_ddu');
-	}
+	
+public function staff_dashboard_ddu()
+{
+if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
+    {
+
+
+$this->load->view('staff_dashboard_ddu');
+}
+else
+        {
+             redirect(base_url().'Main/index');
+        }
+}
 
 
 /*******************
@@ -105,9 +115,15 @@ class Main extends CI_Controller {
 	/*DDU*/
 	public function dashboard_ddu()
 	{
-		$this->load->view('dashboard_ddu');
-	}
+		if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
 
+		$this->load->view('dashboard_ddu');
+	}else
+        {
+             redirect(base_url().'Main/index');
+        }
+}
 	/*******************
 *@function name:email_availability
 *@function:validating email
@@ -191,7 +207,7 @@ class Main extends CI_Controller {
 				'utype'=>$user->utype,'logged_in'=>(bool)true));
 			if( $_SESSION['utype']=='0' && $_SESSION['logged_in']==true)
 			{
-				redirect(base_url().'Main/staffhome');
+				redirect(base_url().'Main/staff');
 			}
 			elseif( $_SESSION['utype']=='1' && $_SESSION['logged_in']==true)
 			{
@@ -226,19 +242,7 @@ class Main extends CI_Controller {
 	}
 
 
-/*******************
-*@function name:courseview
-*@function:viewing course details
-*@Author:keerthi
-*@date:04/03/2021
-*******************/
 
-	public function courseview()
-	{
-		$this->load->model('Mainmodel');
-		$data['n']=$this->Mainmodel->viewt();
-		$this->load->view('courseview',$data);
-	}
 
 /*******************
 *@function name:delete
@@ -258,17 +262,17 @@ class Main extends CI_Controller {
 /*******************
 *@function name:studentview
 *@function:viewing student details 
-*@Author:keerthi
-*@date:04/03/2021
+*@Author:kavya
+*@date:06/03/2021
 *******************/
 
-		
-	public function studentview()
-	{
+	
+		public function studentview()
+		{
 		$this->load->model('Mainmodel');
-		$data['n']=$this->Mainmodel->views();
+		$data['n']=$this->Mainmodel->getstudent_details();
 		$this->load->view('studentview',$data);
-	}
+		}
 
 /*******************
 *@function name:deletes
@@ -421,7 +425,19 @@ $this->load->view('addproject_target');
 			  $data['n']=$this->Mainmodel->notify();
 			  $this->load->view('viewnotification',$data);
 			}
+/*******************
+*@function name:courseview
+*@function:viewing course details
+*@Author:keerthi
+*@date:04/03/2021
+*******************/
 
+	public function courseview()
+	{
+		$this->load->model('Mainmodel');
+		$data['n']=$this->Mainmodel->viewt();
+		$this->load->view('courseview',$data);
+	}
 
 /*******************
 *@function name:addcourse_target
@@ -430,7 +446,7 @@ $this->load->view('addproject_target');
 *@date:05/03/2021
 *******************/
 
-			public function addcourse_target()
+	public function addcourse_target()
   {
 
   		$this->load->model('Mainmodel');
@@ -461,48 +477,111 @@ $this->load->view('addproject_target');
 		}	
 }
 
-  /* ************insertion of course target ends here*********/
-/*******************
-*@function name:adddistrict_target
-*@function: view page for district_target
-*@Author:Kavya B
-*@date:05/03/2021
-*******************/
-  public function adddistrict_target()
-  {
-  		$this->load->model('Mainmodel');
-		$data['n']=$this->Mainmodel->fetch_course();
-		$data['n1']=$this->Mainmodel->fetch_project();
-		$this->load->view('adddistrict_target',$data);
   /*******************
-*@function name:insertdistrict_target
-*@function: inserting district_target
-*@Author:Kavya B
+*@function name:updatecourse_target
+*@function:updating course_target
+*@Author:kavya B
 *@date:05/03/2021
-*******************/	
-  }
-  public function insertdistrict_target()
-  {
-  	$this->load->library('form_validation');
-		$this->form_validation->set_rules("tvm","tvm",'required');
-		$this->form_validation->set_rules("klm","klm",'required');
-		$this->form_validation->set_rules("alp","alp",'required');
-		$this->form_validation->set_rules("ktm","ktm",'required');
-		$this->form_validation->set_rules("idk","idk",'required');
+			*******************/
+			public function updatecourse_target()
+			{
+
+
+			$a=array("cname"=>$this->input->post("cname"),"totalseat"=>$this->input->post("ctarget"),"pid"=>$this->input->post("project"));
+			$this->load->model('Mainmodel');
+			$id=$this->uri->segment(3);
+
+
+			$data['user_data']=$this->Mainmodel->course_singledata($id);
+
+			$this->Mainmodel->course_singleselect();
+
+
+			$this->load->view('updatecourse_target',$data);
+
+			if($this->input->post("update"))
+			{
+			$this->Mainmodel->updatecourse_target($a,$this->input->post("id"));
+			redirect('Main/courseview','refresh');
+			}
+			}
+
+
+
+// ******************
+// *@function name:add_district
+// *@function: view page for add district
+// *@Author:Kavya B
+// *@date:05/03/2021
+ // *******************
+		 public function add_district()
+		{
+		$this->load->model('Mainmodel');
+		$data['n']=$this->Mainmodel->get_projectname();
+		$this->load->view('add_district',$data);
+		}
+		public function insert_district()
+		{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules("district","district",'required');
+		$this->form_validation->set_rules("project","project",'required');
+
 		if($this->form_validation->run())
 		{
-			$this->load->model('Mainmodel');
 
-			$n=array("tvm"=>$this->input->post("tvm"),"tvmrem"=>$this->input->post("tvm"),"kollam"=>$this->input->post("klm"),"kollam_rem"=>$this->input->post("klm"),"pta"=>$this->input->post("pta"));
 
-			$this->Mainmodel->insertcourse_target($n);
-			redirect('Main/addcourse_target','refresh');
+		$this->load->model('Mainmodel');
+
+		$n=array("disname"=>$this->input->post("district"),"pid"=>$this->input->post("project"));
+
+		$this->Mainmodel->insert_district($n);
+		redirect('Main/add_district','refresh');
 		}
+		}
+
+
+  /* ************insertion of course target ends here********
+// /*******************
+// *@function name:adddistricts_target
+// *@function: view page for district_target
+// *@Author:Kavya B
+// *@date:05/03/2021
+// *******************/
+//   public function adddistrict_target()
+//   {
+//   		$this->load->model('Mainmodel');
+// 		$data['n']=$this->Mainmodel->fetch_course();
+// 		$data['n1']=$this->Mainmodel->fetch_project();
+// 		$this->load->view('adddistrict_target',$data);
+//   /*******************
+// *@function name:insertdistrict_target
+// *@function: inserting district_target
+// *@Author:Kavya B
+// *@date:05/03/2021
+// *******************/	
+//   }
+//   public function insertdistrict_target()
+//   {
+//   	$this->load->library('form_validation');
+// 		$this->form_validation->set_rules("tvm","tvm",'required');
+// 		$this->form_validation->set_rules("klm","klm",'required');
+// 		$this->form_validation->set_rules("alp","alp",'required');
+// 		$this->form_validation->set_rules("ktm","ktm",'required');
+// 		$this->form_validation->set_rules("idk","idk",'required');
+// 		if($this->form_validation->run())
+// 		{
+// 			$this->load->model('Mainmodel');
+
+// 			$n=array("tvm"=>$this->input->post("tvm"),"tvmrem"=>$this->input->post("tvm"),"kollam"=>$this->input->post("klm"),"kollam_rem"=>$this->input->post("klm"),"pta"=>$this->input->post("pta"));
+
+// 			$this->Mainmodel->insertcourse_target($n);
+// 			redirect('Main/addcourse_target','refresh');
+// 		}
 		
 
-	}
+// 	}
 
-	/*******************
+/*******************
 *@function name:register1_ddu
 *@function:view students details adding page
 *@Author:Kripa Babu
@@ -512,18 +591,19 @@ $this->load->view('addproject_target');
 
 public function register1_ddu()
 {
-	if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
+if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
     {
 $this->load->model('Mainmodel');
 $data['user_data']=$this->Mainmodel->viewbatch();
 $data['user_dat']=$this->Mainmodel->viewcourse();
 $data['user_da']=$this->Mainmodel->viewdistrict();
+// $data['user_d']=$this->Mainmodel->viewdistricttarget();
 $this->load->view('register1_ddu',$data);
 
 }
 else
         {
-             redirect(base_url().'main/index');
+             redirect(base_url().'Main/index');
         }
 }
 /*******************
@@ -534,7 +614,7 @@ else
 *******************/
 public function studentsadd()
 {
-	if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
+if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
     {
 $this->load->library("form_validation");
 $this->form_validation->set_rules("name","name",'required');
@@ -552,47 +632,112 @@ $this->form_validation->set_rules("panchayth","panchayth",'required');
 
 if($this->form_validation->run())
 {
-	
-	$cid=$this->input->post("course");
-	$pid=$this->input->post("batch");
-	$disid=$this->input->post("district");
-	$dist=$this->input->post("dist");
-	$coursename=$this->input->post("coursename");
+
+$cid=$this->input->post("course");
+$pid=$this->input->post("batch");
+$disid=$this->input->post("district");
+$dist=$this->input->post("dist");
+$coursename=$this->input->post("coursename");
 
 $this->load->model('Mainmodel');
 $a=array("name"=>$this->input->post("name"),
-		"gender"=>$this->input->post("gender"),
-		"kudumbasree"=>$this->input->post("kudumbasree"),
-		"aplbpl"=>$this->input->post("aplbpl"),
-		"religion"=>$this->input->post("religion"),
-		"caste"=>$this->input->post("caste"),
-		"category"=>$this->input->post("category"),
-		"mgnreg"=>$this->input->post("mgnreg"),
-		"panchayath"=>$this->input->post("panchayth"),
-		"cid"=>$cid,
-		"pid"=>$pid,
-		"disid"=>$disid);
+"gender"=>$this->input->post("gender"),
+"kudumbasree"=>$this->input->post("kudumbasree"),
+"aplbpl"=>$this->input->post("aplbpl"),
+"religion"=>$this->input->post("religion"),
+"caste"=>$this->input->post("caste"),
+"category"=>$this->input->post("category"),
+"mgnreg"=>$this->input->post("mgnreg"),
+"panchayath"=>$this->input->post("panchayth"),
+"cid"=>$cid,
+"pid"=>$pid,
+"disid"=>$disid);
+$res=$this->Mainmodel->target($cid,$pid,$disid);
+if($res>0)
+{
 $this->Mainmodel->studentsadd($a);
 $this->Mainmodel->distargetrem($cid,$pid,$disid);
 $this->Mainmodel->coursetarget($cid);
 $this->Mainmodel->projecttarget($pid);
+redirect(base_url().'Main/register1_ddu');
+
+}
+else
+{
+  echo "<h1>no more seat available</h1>";
+  echo "<a href='register1_ddu'>back</a>";
+ 
+}
 // $cname=$this->Mainmodel->cnamefetch($cid);
 // $distname=$this->Mainmodel->distnamefetch($disid);
 // if($coursename==$cname && $dist==$distname)
 // {
-// 	$this->Mainmodel->updatetarget();
+// $this->Mainmodel->updatetarget();
 
 // }
-redirect(base_url().'Main/register1_ddu');
 
 }
-} 
+}
 else
         {
-             redirect(base_url().'main/index');
+             redirect(base_url().'Main/index');
         }
 }
+
+
 /*******************
+*@function name:adddistrict_target
+*@function:add district target
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+ public function adddistrict_target()
+  {
+     if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
+  $this->load->model('Mainmodel');
+$data['n']=$this->Mainmodel->fetch_course();
+$data['n1']=$this->Mainmodel->fetch_project();
+$data['n2']=$this->Mainmodel->fetch_district();
+$this->load->view('adddistrict_target',$data);
+}
+else
+        {
+             redirect(base_url().'Main/index');
+        }
+  }
+ 
+  public function insertdistrict_target()
+  {
+     if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules("distarget","distarget",'required');
+		$this->form_validation->set_rules("district","district",'required');
+		$this->form_validation->set_rules("course","course",'required');
+		$this->form_validation->set_rules("pname","pname",'required');
+		if($this->form_validation->run())
+		{
+
+		$this->load->model('Mainmodel');
+
+		$n=array("distarget"=>$this->input->post("distarget"),
+		     "distargetrem"=>$this->input->post("distarget"),
+		     "disid"=>$this->input->post("district"),
+		     "cid"=>$this->input->post("course"),
+		     "pid"=>$this->input->post("pname"));
+
+		$this->Mainmodel->insertdistrict_target($n);
+		redirect('Main/adddistrict_target','refresh');
+		}
+		}
+		else
+        {
+             redirect(base_url().'Main/index');
+        }
+
+  }
+ /*******************
 *@function name:viewtarget
 *@function:view remaining targets
 *@Author:Kripa Babu
@@ -600,59 +745,138 @@ else
 *******************/
 public function viewtarget()
 {
-	 $this->load->model('Mainmodel');
+		  if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
+		    {
+		    $this->load->model('Mainmodel');
+		        $data['n']=$this->Mainmodel->viewdistarget();
+		        $data['n1']=$this->Mainmodel->viewprotarget();
+		        $data['n2']=$this->Mainmodel->viewcoursetarget();
+		        $this->load->view('viewtarget',$data);
+		        }
+		else
+		        {
+		             redirect(base_url().'Main/index');
+		        }
+		}
+
+/*******************
+*@function name:viewtarget
+*@function:view remaining targets by admin
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+public function viewtargetad()
+{
+    if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
+       $this->load->model('Mainmodel');
         $data['n']=$this->Mainmodel->viewdistarget();
         $data['n1']=$this->Mainmodel->viewprotarget();
         $data['n2']=$this->Mainmodel->viewcoursetarget();
         $this->load->view('viewtarget',$data);
+        }
+        else
+        {
+             redirect(base_url().'Main/index');
+        }
 }
-
-
 /*******************
-*@function name:studentsadd
-*@function:add district target
+*@function name:changecount
+*@function:interchange district count by admin
 *@Author:Kripa Babu
 *@date:05/03/2021
 *******************/
+		public function changecount()
+		{
+		if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+		    {
+		$this->load->model('Mainmodel');
+
+		       	$data['n']=$this->Mainmodel->changeprotarget();
+		        $data['n1']=$this->Mainmodel->changecoursetarget();
+		        $data['n2']=$this->Mainmodel->changedistarget();
+		       
+		        $this->load->view('changecount',$data);
+		         }
+		else
+		        {
+		             redirect(base_url().'Main/index');
+		        }
+
+		}
+
+/*******************
+*@function name:changecountaction
+*@function:change  count by admin
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+				public function changecountaction()
+				{
+				  if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+				    {
+				$this->load->library("form_validation");
+				$this->form_validation->set_rules("addseat","addseat",'required');
+				//$this->form_validation->set_rules("distarget","distarget",'required');
+				if($this->form_validation->run())
+				{
+				$this->load->model('Mainmodel');
+				$pid=$this->input->post("project");
+				$cid=$this->input->post("cname");
+				$disid=$this->input->post("district");
+				$dissid=$this->input->post("dis");
+				$borrow=$this->input->post("addseat");
+				$add=$this->input->post("distarget");
+				$this->Mainmodel->changecountaction($pid,$cid,$disid,$borrow);
+				  $this->Mainmodel->changecountactioninc($pid,$cid,$dissid,$borrow);
+				  redirect(base_url().'Main/changecount');
+				}
+				  }
+				else
+				        {
+				             redirect(base_url().'Main/index');
+				        }
+
+				}
 
 
+/*******************
+*@function name:chartview
+*@function:viewing chart
+*@Author:keerthi
+*@date:06/03/2021
+*******************/
+				public function chartview()
+				{
+				  if($_SESSION['logged_in']==true && $_SESSION['usertype']=='0')
+				        {
+				$this->load->model('Mainmodel');
+				$data['n']=$this->Mainmodel->chart();
+				$this->load->view('chartview',$data);
+				}
+				        else
+				        {
+				             redirect(base_url().'Main/staff_dashboard_ddu');
+				        }
 
-  public function adddistrict_target()
-  {
-  $this->load->model('Mainmodel');
-$data['n']=$this->Mainmodel->fetch_course();
-$data['n1']=$this->Mainmodel->fetch_project();
-$data['n2']=$this->Mainmodel->fetch_district();
-$this->load->view('adddistrict_target',$data);
- 
-  }
- 
-  public function insertdistrict_target()
-  {
-  $this->load->library('form_validation');
-$this->form_validation->set_rules("distarget","distarget",'required');
-
-$this->form_validation->set_rules("district","district",'required');
-
-$this->form_validation->set_rules("course","course",'required');
-
-$this->form_validation->set_rules("pname","pname",'required');
-echo "hello";
-if($this->form_validation->run())
+				}
+/*******************
+*@function name:logout
+*@function:logging out from the session
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/				
+public function logout()
 {
-
-echo "hello";
-$this->load->model('Mainmodel');
-
-$n=array("distarget"=>$this->input->post("distarget"),
-		 "distargetrem"=>$this->input->post("distarget"),
-		 "disid"=>$this->input->post("district"),
-		 "cid"=>$this->input->post("course"),
-		 "pid"=>$this->input->post("pname"));
-
-$this->Mainmodel->insertdistrict_target($n);
-redirect('Main/adddistrict_target','refresh');
+    $user_data = $this->session->all_userdata();
+        foreach ($user_data as $key => $value) {
+            if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+                $this->session->unset_userdata($key);
+            }
+        }
+    $this->session->sess_destroy();
+    redirect(base_url().'main/index');
 }
- }
+
  
 }
