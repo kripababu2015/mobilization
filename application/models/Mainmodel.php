@@ -163,18 +163,21 @@ class Mainmodel extends CI_model
 					return $qry;
 					}
 	/*******************
-*@function name:views
+*@function name:getstudent_detail
 *@function:fetching details from studdetails_tbl
-*@Author:keerthi
-*@date:04/03/2021
+*@Author:kavya
+*@date:06/03/2021
 *******************/
-	public function views()
-			{
-				$this->db->select('*');
-				$qry=$this->db->get("studdetails_tbl");
-				return $qry;
+				public function getstudent_details()
+			 {
+			  $this->db->select('*');
+			$qry=$this->db->join('course_tbl','studdetails_tbl.cid=course_tbl.cid','inner');
+			$qry=$this->db->join('project_tbl','studdetails_tbl.pid=project_tbl.pid','inner');
+			$qry=$this->db->join('districtname_tbl','districtname_tbl.disid= studdetails_tbl.disid','inner');
 
-			}
+			$qry=$this->db->get('studdetails_tbl');
+			return $qry;
+			 }
 	/*******************
 *@function name:deletes
 *@function:delete student details from studdetails_tbl  
@@ -222,13 +225,28 @@ public function notify()
   $qry=$this->db->get("notification_tbl");
   return $qry;
 }
+
+
+/*******************
+*@function name: get_project
+*@function: fetching project details
+*@Author:Kavya B
+*@date:04/03/2021
+*******************/
+				public function get_project()
+				{
+				$this->db->select('*');
+				$qry=$this->db->get("project_tbl");
+				return $qry;
+
+				}
+
 /*******************
 *@function name:insertcourse_target
 *@function: inserting course target into course_tbl
 *@Author:Kavya B
 *@date:05/03/2021
 *******************/
-/*insert course target*/
 	public function insertcourse_target($n)
 	{
 		$this->db->insert("course_tbl",$n);
@@ -245,6 +263,40 @@ public function notify()
 		$qry=$this->db->get("course_tbl");
 		return $qry;
 	}
+
+  /*******************
+*@function name:updatecourse_target
+*@function:updating course_target
+*@Author:kavya B
+*@date:05/03/2021
+			*******************/
+			/*updation of course target*/
+
+			public function course_singledata($id)
+			{
+			$this->db->select('project_tbl.pname,course_tbl.cname,course_tbl.totalseat,course_tbl.cid,project_tbl.pid');
+			$this->db->where("cid",$id);
+			$qry=$this->db->join('project_tbl','project_tbl.pid=course_tbl.pid','inner');
+			$qry=$this->db->get("course_tbl");
+			return $qry;
+
+			}
+			public function course_singleselect()
+
+			{
+			$this->db->select('project_tbl.pname,course_tbl.cname,course_tbl.totalseat,course_tbl.cid,project_tbl.pid');
+			$qry=$this->db->join('project_tbl','project_tbl.pid=course_tbl.pid','inner');
+			$qry=$this->db->get("course_tbl");
+			return $qry;
+			}
+
+			public function updatecourse_target($a,$id)
+			{
+			$this->db->select('*');
+			$qry=$this->db->where("cid",$id);
+			$qry=$this->db->update("course_tbl",$a);
+			return $qry;
+			}
 /*******************
 *@function name:fetch_project
 *@function:fetching project details from project_tbl
@@ -305,6 +357,25 @@ public function viewdistrict()
 		$qry=$this->db->get("districtname_tbl");
         return $qry;
 }
+
+// ******************
+// *@function name:get_projectname
+// *@function: fetching project details
+// *@Author:Kavya B
+// *@date:05/03/2021
+ // *******************
+		public function get_projectname()
+		  {
+		  $this->db->select('*');
+		$qry=$this->db->get("project_tbl");
+		return $qry;
+
+		  }
+		public function insert_district($n)
+		  {
+		  $this->db->insert("districtname_tbl",$n);
+		  }
+
 
 /*******************
 *@function name:studentsadd
@@ -401,8 +472,190 @@ public function viewcoursetarget()
     return $qry;
 
 }
+/*******************
+*@function name:fetch_district
+*@function:fetching district deatils from districtname_tbl
+*@Author:Keerthi
+*@date:06/03/2021
+*******************/
+public function fetch_district()
+{
+  $this->db->select('*');
+  $qry=$this->db->get("districtname_tbl");
+   return $qry;
 
+}
+/*******************
+*@function name:changedistarget
+*@function:view district target
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
 
+public function changedistarget()
+{
+  $this->db->select('*');
+    $qry=$this->db->get("districtname_tbl");
+    return $qry;
+} 
+/*******************
+*@function name:changeprotarget
+*@function:view project target
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+public function changeprotarget()
+{
+  $this->db->select('*');
+   $qry=$this->db->get("project_tbl");
+    return $qry;
 
+}
+/*******************
+*@function name:changecoursetarget
+*@function:view course target
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+public function changecoursetarget()
+{
+  $this->db->select('*');
+   $qry=$this->db->get("course_tbl");
+    return $qry;
+
+}
+/*******************
+*@function name:changecount
+*@function: fetch details
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+      public function changecount()
+      {
+          $this->db->select('*');
+          $this->db->join('project_tbl','project_tbl.pid=distarget.pid','inner');
+          $this->db->join('course_tbl','course_tbl.cid=distarget.cid','inner');
+          $this->db->join('districtname_tbl','districtname_tbl.disid=distarget.disid','inner');
+          $qry=$this->db->get("distarget");
+          return $qry;
+      }
+  /*******************
+*@function name:changecountaction
+*@function: decrease count of field
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+
+      public function changecountaction($pid,$cid,$disid,$borrow)
+      {
+        $this->db->select('*');
+        $this->db->from("distarget");
+        $this->db->where('cid',$cid);
+         $this->db->where('pid',$pid);
+          $this->db->where('disid',$disid);
+          $result=$this->db->get()->row('distargetrem');
+          echo $result;
+          $update=$result-$borrow;
+          echo $update;
+        $this->db->set('distargetrem',$update,FALSE);
+        echo "hello";
+        $this->db->where('cid',$cid);
+         $this->db->where('pid',$pid);
+          $this->db->where('disid',$disid);
+          echo "hello";
+        $this->db->update('distarget');
+        echo "hello";
+
+      }
+      /*******************
+*@function name:changecountactioninc
+*@function: increase count of field
+*@Author:Kripa Babu
+*@date:06/03/2021
+*******************/
+       public function changecountactioninc($pid,$cid,$dissid,$borrow)
+      {
+        $this->db->select('*');
+        $this->db->from("distarget");
+        $this->db->where('cid',$cid);
+         $this->db->where('pid',$pid);
+          $this->db->where('disid',$dissid);
+          $result=$this->db->get()->row('distargetrem');
+          echo $result;
+          $update=$result+$borrow;
+          echo $update;
+        $this->db->set('distargetrem',$update,FALSE);
+        echo "hello";
+        $this->db->where('cid',$cid);
+         $this->db->where('pid',$pid);
+          $this->db->where('disid',$dissid);
+          echo "hello";
+        $this->db->update('distarget');
+        echo "hello";
+
+      }
+ /*******************
+*@function name:viewdistrict
+*@function:select district target
+*@Author:Kripa Babu
+*@date:06/03/2021
+*******************/
+      public function viewdistricttarget($cid,$disid,$pid)
+{
+   
+
+          $this->db->select('*');
+        $this->db->from("distarget");
+        $this->db->where('cid',$cid);
+         $this->db->where('pid',$pid);
+          $this->db->where('disid',$disid);
+          $result=$this->db->get()->row('distargetrem');
+          return $qry;
+}
+/*******************
+*@function name:target
+*@function:select district target
+*@Author:Kripa Babu
+*@date:06/03/2021
+*******************/
+public function target($cid,$pid,$disid)
+{
+
+$this->db->select('*');
+        $this->db->from("distarget");
+        $this->db->where('cid',$cid);
+         $this->db->where('pid',$pid);
+          $this->db->where('disid',$disid);
+          $result=$this->db->get()->row('distargetrem');
+          return $result;
+        }
+
+/*******************
+*@function name:insertdistrict_target
+*@function:insert district target
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
+		public function insertdistrict_target($n)
+		{
+		$this->db->insert("distarget",$n);
+		}
+/*******************
+*@function name:chart
+*@function:chart loading from db
+*@Author:keerthi
+*@date:06/03/2021
+*******************/
+
+			public function chart()
+			{
+			$this->db->select('*');
+			    // $this->db->join('project_tbl','project_tbl.pid=distarget.pid','inner');
+			    //  $this->db->join('course_tbl','course_tbl.cid=distarget.cid','inner');
+			    //  $this->db->join('districtname_tbl','districtname_tbl.disid=distarget.disid','inner');
+			    $qry=$this->db->get("distarget");
+			    return $qry;
+
+			}
 
      }
