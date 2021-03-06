@@ -43,15 +43,15 @@
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo base_url()?>Main/staff_dashboard_ddu">
               <i class="material-icons">bubble_chart</i>
-              <p>DDU-GKY</p>
+              <p>Details</p>
             </a>
           </li>
-          <li class="nav-item ">
+        <!--   <li class="nav-item ">
             <a class="nav-link" href="./dashboard_yuva.html">
               <i class="material-icons">content_paste</i>
               <p>YUVA KERALAM</p>
             </a>
-          </li>
+          </li> -->
           
         </ul>
       </div>

@@ -9,8 +9,16 @@
             <!---Bootstrap5----->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <!---custom style---->
-            <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" href="../css/style.css">
     </head>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
+           
+           
+      </div>
+    </nav>
    <!--  /*******************
 *@function name:studentview
 *@function:viewing student details
@@ -23,7 +31,6 @@
     <thead>
     <tr>
       <th scope="col">Studentname</th>
-      <th scope="col">District</th>
       <th scope="col">Gender</th>
       <th scope="col">Member of kudumbashree</th>
       <th scope="col">APL/BPL</th>
@@ -32,7 +39,10 @@
       <th scope="col">Category</th>
       <th scope="col">Member of MNREG</th>
       <th scope="col">Panchayath</th>
-      <th scope="col">action</th>
+      <th scope="col">District</th>
+      <th scope="col">Project</th>
+      <th scope="col">Course</th>
+      
  </tr>
     <?php
                 if($n->num_rows()>0)
@@ -44,17 +54,20 @@
   <tbody>
     <tr>
       <td><?php echo $row->name;?></td>
-      <td><?php echo $row->district;?></td>
       <td><?php echo $row->gender;?></td>
       <td><?php echo $row->kudumbasree;?></td>
       <td><?php echo $row->aplbpl;?></td>
       <td><?php echo $row->religion;?></td>
       <td><?php echo $row->caste;?></td>
       <td><?php echo $row->category;?></td>
-      <td><?php echo $row->mgnrega;?></td>
+      <td><?php echo $row->mgnreg;?></td>
       <td><?php echo $row->panchayath;?></td>
-      <td><a href="<?php echo base_url()?>Main/delete/<?php echo $row->sid;?>">Delete</a></td>
-                </tr>
+       <td><?php echo $row->disname;?></td>
+        <td><?php echo $row->pname;?></td>
+        <td><?php echo $row->cname;?></td>
+      <!-- <td><a href="<?php echo base_url()?>Main/stud_delete/<?php echo $row->sid;?>">Delete</a></td>
+       <td><a href="<?php echo base_url()?>Main/stud_update/<?php echo $row->sid;?>">Update</a></td> -->
+                
       
     </tr>
     <?php     }

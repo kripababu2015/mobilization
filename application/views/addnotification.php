@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <title>mobilization</title>
@@ -12,7 +13,17 @@
             <!---custom style---->
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/index_style.css');?>" media="all"/>
 
-</head>
+
+<link rel="stylesheet" href="../css/style.css">
+    </head>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      <a class="navbar-brand" href="<?php echo base_url()?>Main/staff_dashboard_ddu"> Home</a>  
+           
+           
+      </div>
+    </nav>
 <!-- /*******************
 *@function name:addnotification
 *@function:add notification to admin
@@ -20,30 +31,7 @@
 *@date:05/03/2021
 *******************/ -->
 <body>
- <nav class="bg">
-<div class="container-fluid py-3 text-dark">
-<div class="row">
-<div class="col-3">
-    <i class="fas fa-map-marker-alt">MT Nagar,2nd Street,Delhi </i>
-</div>
-<div class="col-3">
-    <i class="fa fa-phone">-9605805161</i>
-</div>
-<div class="col-3">
-    <i class="fa fa-envelope"> team2@gmail.com</i>
-</div>
-<div class="col-3 text-end">
-    <i class="fab fa-facebook"></i>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-twitter"></i>
-<i class="fab fa-google"></i>
-<i class="fab fa-pinterest"></i>
-</div>
 
-</div>
-
-</div>
-</nav>
   <form action="<?php echo base_url()?>Main/notifcation_add" method="post" >
     <center>
        
@@ -52,7 +40,7 @@
       <div class=" container w-25 py-5">
 
           <h1>MESSAGE</h1>
-          <input type="text" name="message" placeholder="MESSAGE" class="form-control ">
+          <input type="text" name="message" placeholder="MESSAGE" required pattern="regexp" class="form-control ">
             <div class="py-3">
 
           <input type="submit" name="submit" value="sumbit" class="btn btn-primary w-50 ">

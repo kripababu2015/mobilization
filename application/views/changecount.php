@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>District wise Target</title>
+        <title>Mobilization</title>
             <meta charset=utf-8>
             <meta name="viewport" content="width=device-width,initial-scale=1">
             <!---Fontawesome--->
@@ -10,51 +10,48 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <!---custom style---->
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/index_style.css');?>" media="all"/>
-            <link rel="stylesheet" href="../css/style.css">
-    </head>
-    <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
-           
-           
-      </div>
-    </nav>
     </head>
   <!-- /*******************
-*@function name:studentsadd
-*@function:add district target
+*@function name:change count
+*@function:change count
 *@Author:Kripa Babu
 *@date:05/03/2021
 *******************/-->
 <body class="">
     
 
- <form action="<?php echo base_url()?>Main/insertdistrict_target" method="post">
+ <form action="<?php echo base_url()?>Main/changecountaction" method="post">
     <div>
     <div class="container w-25 py-5 col-ms-6">
         <div class="form-outline text-center">
             <label class="form-label h2 text-primary " for="form1">Districts </label>
         </div>
-            District: <select name="district" required class="form-select">
+            Project: <select name="project" class="form-select">
             <?php
-            if($n2->num_rows()>0)
+            if($n->num_rows()>0)
             {
-                foreach($n2->result() as $row)
+                foreach($n->result() as $row)
                     {
             ?>
             
-                <option value="<?php echo $row->disid;?>"><?php echo $row->disname;?></option>
+                <option value="<?php echo $row->pid;?>"><?php echo $row->pname;?></option>
 
-            
              <?php
                 }
             }
-            ?>   
+            ?>  
+             
+        </select>
+        
+<br>
+        
 
-        </select><br>
-               <label class="form-label" for="select">Project name</label>
-                        <select class="form-select" id="select" required name="pname"aria-label="Default select example">
+        
+           
+
+
+                    <label class="form-label" for="select">Course name</label>
+                        <select class="form-select" id="select" name="cname"aria-label="Default select example">
                                 <option></option>
                             <?php 
 
@@ -62,43 +59,74 @@
             {
                 foreach($n1->result() as $row)
                     {
-            ?>   
-                            <option value="<?php echo $row->pid;?>"><?php echo $row->pname?></option>
-
-              <?php
+            ?>
+                            
+                            <option value="<?php echo $row->cid;?>"><?php echo $row->cname?></option>
+                             <?php
                 }
             }
-            ?>    </select>
+            ?>   
+             
+                        </select>
+                        
 
-        <label>Course Name</label>
-        <select name="course" required class="form-select" >
+
+        <label>Seat Borrow from</label>
+        <select name="district" class="form-select" >
             <option></option>
             <?php 
 
-            if($n->num_rows()>0)
+            if($n2->num_rows()>0)
             {
-                foreach($n->result() as $row)
+                foreach($n2->result() as $row)
                     {
             ?>
                 
-                        <option value="<?php echo $row->cid;?>" require><?php echo $row->cname?></option>
-
-
-            <?php
+                        <option value="<?php echo $row->disid;?>" require><?php echo $row->disname?></option>
+                        <?php
                 }
             }
             ?> 
-
         </select>
-        District Target
-        <input type="text" name="distarget" class="form-control " required pattern="[a-zA-Z]+">
+       
+                <label>Seat Required for</label>
+        <select name="dis" class="form-select" >
+            <option></option>
+            <?php 
+
+            if($n2->num_rows()>0)
+            {
+                foreach($n2->result() as $row)
+                    {
+            ?>
+                
+                        <option value="<?php echo $row->disid;?>" require><?php echo $row->disname?></option>
+
+                        <?php
+                }
+            }
+            ?> 
+           
+        </select>
+         <label>Add seat</label>
+         
+            <input type="text" name="addseat" class="form-control">
+         
+
+       <!-- <label>Add seat</label>
+        <input type="text" name="distarget" class="form-control "> -->
 
                    <div class="py-3">     
                         
                 <input class="btn btn-primary" type="submit" value="Submit">
                     </div>
-            </div> 
+                
+            </div>
+
+        
 </form>
+
+
 </body>
 
 <!---Jquery--->

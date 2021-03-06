@@ -53,13 +53,13 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="<?php echo base_url()?>Main/s_progress_ddu">
+            <a class="nav-link" href="<?php echo base_url()?>Main/chartview">
               <i class="material-icons">content_paste</i>
               <p>Batch Progress</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="<?php echo base_url()?>Main/viewtarget">
               <i class="material-icons">library_books</i>
               <p>Batch list</p>
             </a>
@@ -130,7 +130,7 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="<?php echo base_url()?>Main/notification" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
                   <span class="notification">5</span>
                   <p class="d-lg-none d-md-block">
@@ -146,7 +146,7 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="<?php echo base_url()?>Main/logout" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account

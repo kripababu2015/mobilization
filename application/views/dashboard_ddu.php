@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,14 +42,14 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?php echo base_url()?>Main/viewtargetad">
               <i class="material-icons">bubble_chart</i>
              <p>Target</p>
             </a>
 
               <ul class="nav ">
                 <li class="nav-item  ">
-                  <a class="nav-link" href="<?php echo base_url()?>Main/addproject_target">
+                  <a class="nav-link" href="<?php echo base_url()?>Main/projectview">
                    <i class="material-icons">bubble_chart</i>
                     <p>Add Project-Target</p>
                   </a>
@@ -58,7 +57,7 @@
                 </li>
 
                 <li class="nav-item  ">
-                  <a class="nav-link" href="<?php echo base_url()?>Main/addcourse_target">
+                  <a class="nav-link" href="<?php echo base_url()?>Main/courseview">
                    <i class="material-icons">bubble_chart</i>
                     <p>Add Course-Target</p>
                   </a>
@@ -74,29 +73,29 @@
 
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?php echo base_url()?>Main/add_district">
               <i class="material-icons">content_paste</i>
               <p>Add District</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <!-- <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>
               <p>Add Batch</p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="<?php echo base_url()?>Main/studentview">
               <i class="material-icons">person</i>
               <p>Candidate Details</p>
             </a>
           </li>
-           <li class="nav-item ">
-            <a class="nav-link" href="<?php echo base_url()?>">
+           <!-- <li class="nav-item ">
+            <a class="nav-link" href="">
               <i class="material-icons">location_ons</i>
               <p>Home</p>
             </a>
-          </li> 
+          </li>  -->
           <!-- <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
@@ -151,7 +150,7 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="<?php echo base_url()?>Main/notifview" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
                   <span class="notification">5</span>
                   <p class="d-lg-none d-md-block">
@@ -160,14 +159,14 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
                   <a class="dropdown-item" href="#">You're now friend with Andrew</a>
                   <a class="dropdown-item" href="#">Another Notification</a>
                   <a class="dropdown-item" href="#">Another One</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="<?php echo base_url()?>Main/logout" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account

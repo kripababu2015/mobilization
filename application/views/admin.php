@@ -46,15 +46,15 @@
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo base_url()?>main/dashboard_ddu">
               <i class="material-icons">bubble_chart</i>
-              <p>DDU-GKY</p>
+              <p>DDU-GKY/YUVA KERALAM</p>
             </a>
           </li>
-          <li class="nav-item ">
+         <!--  <li class="nav-item ">
             <a class="nav-link" href="./dashboard_yuva.html">
               <i class="material-icons">content_paste</i>
               <p>YUVA KERALAM</p>
             </a>
-          </li>
+          </li> -->
           
         </ul>
       </div>
@@ -108,7 +108,7 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="<?php echo base_url()?>Main/logout" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account

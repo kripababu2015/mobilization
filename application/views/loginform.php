@@ -65,17 +65,17 @@
                 <div class="mb-3">
                     <label for="Input1" class="form-label">Username</label>
                     <input type="text" name="name"class="form-control" id="exampleFormControlInput1" placeholder="username"
-                        required>
+                        required   pattern="[a-zA-Z]+">
                 </div>
                 <div class="mb-3">
                     <label for="Input2" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleFormControlInput2" placeholder="password"
-                        required>
+                    <input type="password" name="password" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  class="form-control" id="exampleFormControlInput2" placeholder="password"
+                        >
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
                             <label class="form-check-label" for="flexCheckDefault">
                                 Keep me logged in
                             </label>

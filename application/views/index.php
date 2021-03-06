@@ -1,14 +1,3 @@
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
-
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,17 +39,17 @@ The above copyright notice and this permission notice shall be included in all c
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="<?php echo base_url()?>Main/login">
+            <a class="nav-link" href="<?php echo base_url()?>Main/loginform">
               <i class="material-icons">bubble_chart</i>
               <p>LOGIN</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="<?php echo base_url()?>Main/staffhome">
+          <!-- <li class="nav-item ">
+            <a class="nav-link" href="<?php echo base_url()?>Main/">
               <i class="material-icons">content_paste</i>
               <p>Register</p>
             </a>
-          </li>
+          </li> -->
           <!-- <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>

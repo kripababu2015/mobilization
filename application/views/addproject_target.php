@@ -11,6 +11,15 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <!---custom style---->
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/index_style.css');?>" media="all"/>
+            <link rel="stylesheet" href="../css/style.css">
+            <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
+           
+           
+      </div>
+    </nav>
 
 </head>
 <body>
@@ -26,18 +35,18 @@
       <div class=" container w-25 py-5">
 
           <h1>Project target</h1>
-          <input type="text" name="pname" placeholder="Project Name"  class="form-control ">
+          <input type="text" name="pname" placeholder="Project Name"  required=""  pattern="[a-zA-Z]+" class="form-control ">
 
           <label class="">Start Date</label>
-          <input type="date" name="s_date"  class="form-control ">
-           <label>End Date</label>
-          <input type="date" name="e_date"  class="form-control ">
+            <input type="date" name="s_date"  required=""  class="form-control ">
+          <label>End Date</label>
+            <input type="date" name="e_date"  required=""  class="form-control ">
 
            <label>Year</label>
-          <input type="text" name="year" placeholder="number of years" class="form-control ">
+            <input type="number" name="year" placeholder="number of years"   required=""  class="form-control ">
 
            <label>Total Target</label>
-          <input type="text" name="totalseat" placeholder="total target"  class="form-control ">
+          <input type="number" name="totalseat" placeholder="total target"  required=""  class="form-control ">
 
           <div class="py-3">
           <input type="submit" name="submit" value="submit" class="btn btn-primary w-50 ">
