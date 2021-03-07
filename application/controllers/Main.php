@@ -269,9 +269,15 @@ else
 	
 		public function studentview()
 		{
+			if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
 		$this->load->model('Mainmodel');
 		$data['n']=$this->Mainmodel->getstudent_details();
 		$this->load->view('studentview',$data);
+		}else
+        {
+             redirect(base_url().'Main/index');
+        }
 		}
 
 /*******************
@@ -299,10 +305,17 @@ else
 *******************/
 
 
-public function addproject_target()
-{
-$this->load->view('addproject_target');
-}
+			public function addproject_target()
+			{
+				if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    				{
+
+			$this->load->view('addproject_target');
+					}else
+		        {
+		             redirect(base_url().'Main/index');
+		        }
+			}
 /*******************
 *@function name:insertproject_target
 *@function: inserting project target
@@ -341,9 +354,15 @@ $this->load->view('addproject_target');
 *******************/
 	public function projectview()
 	{
+		if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
 		$this->load->model('Mainmodel');
 		$data['n']=$this->Mainmodel->viewp();
 		$this->load->view('projectview',$data);
+		}else
+        {
+             redirect(base_url().'Main/index');
+        }
 	}
 
 /*******************
@@ -398,7 +417,13 @@ $this->load->view('addproject_target');
 *******************/
 	public function notification()
 	{
+		if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
+    	{
 		$this->load->view('addnotification');
+		}else
+		        {
+		             redirect(base_url().'Main/index');
+		        }
 	}
 	public function notifcation_add()
 	{
@@ -421,9 +446,15 @@ $this->load->view('addproject_target');
 *******************/
 				public function notifview()
 			{ 
+				if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    		{
 			  $this->load->model('Mainmodel');
 			  $data['n']=$this->Mainmodel->notify();
 			  $this->load->view('viewnotification',$data);
+			  }else
+        {
+             redirect(base_url().'Main/index');
+        }
 			}
 /*******************
 *@function name:courseview
@@ -434,9 +465,15 @@ $this->load->view('addproject_target');
 
 	public function courseview()
 	{
+			if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
 		$this->load->model('Mainmodel');
 		$data['n']=$this->Mainmodel->viewt();
 		$this->load->view('courseview',$data);
+		}else
+        {
+             redirect(base_url().'Main/index');
+        }
 	}
 
 /*******************
@@ -448,10 +485,15 @@ $this->load->view('addproject_target');
 
 	public function addcourse_target()
   {
-
+  	if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    {
   		$this->load->model('Mainmodel');
 		$data['n']=$this->Mainmodel->get_project();
 		$this->load->view('addcourse_target',$data); 
+	}else
+        {
+             redirect(base_url().'Main/index');
+        }
   	
   }
   /*******************
@@ -475,7 +517,7 @@ $this->load->view('addproject_target');
 			$this->Mainmodel->insertcourse_target($n);
 			redirect('Main/addcourse_target','refresh');
 		}	
-}
+	}
 
   /*******************
 *@function name:updatecourse_target
@@ -485,29 +527,18 @@ $this->load->view('addproject_target');
 			*******************/
 			public function updatecourse_target()
 			{
-
-
 			$a=array("cname"=>$this->input->post("cname"),"totalseat"=>$this->input->post("ctarget"),"pid"=>$this->input->post("project"));
 			$this->load->model('Mainmodel');
 			$id=$this->uri->segment(3);
-
-
 			$data['user_data']=$this->Mainmodel->course_singledata($id);
-
 			$this->Mainmodel->course_singleselect();
-
-
 			$this->load->view('updatecourse_target',$data);
-
 			if($this->input->post("update"))
 			{
 			$this->Mainmodel->updatecourse_target($a,$this->input->post("id"));
 			redirect('Main/courseview','refresh');
 			}
 			}
-
-
-
 // ******************
 // *@function name:add_district
 // *@function: view page for add district
@@ -516,24 +547,31 @@ $this->load->view('addproject_target');
  // *******************
 		 public function add_district()
 		{
+			if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
+    	{
 		$this->load->model('Mainmodel');
 		$data['n']=$this->Mainmodel->get_projectname();
 		$this->load->view('add_district',$data);
+		}else
+        {
+             redirect(base_url().'Main/index');
+        }
 		}
+// ******************
+// *@function name:insert_district
+// *@function: insert district
+// *@Author:Kavya B
+// *@date:05/03/2021
+ // *******************
 		public function insert_district()
 		{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules("district","district",'required');
 		$this->form_validation->set_rules("project","project",'required');
-
 		if($this->form_validation->run())
 		{
-
-
 		$this->load->model('Mainmodel');
-
 		$n=array("disname"=>$this->input->post("district"),"pid"=>$this->input->post("project"));
-
 		$this->Mainmodel->insert_district($n);
 		redirect('Main/add_district','refresh');
 		}
@@ -616,73 +654,65 @@ public function studentsadd()
 {
 if($_SESSION['logged_in']==true && $_SESSION['utype']=='0')
     {
-$this->load->library("form_validation");
-$this->form_validation->set_rules("name","name",'required');
-$this->form_validation->set_rules("district","district",'required');
-$this->form_validation->set_rules("batch","batch",'required');
-$this->form_validation->set_rules("course","course",'required');
-$this->form_validation->set_rules("gender","gender",'required');
-$this->form_validation->set_rules("kudumbasree","kudumbasree",'required');
-$this->form_validation->set_rules("aplbpl","aplbpl",'required');
-$this->form_validation->set_rules("religion","religion",'required');
-$this->form_validation->set_rules("category","category",'required');
-$this->form_validation->set_rules("caste","caste",'required');
-$this->form_validation->set_rules("mgnreg","mgnreg",'required');
-$this->form_validation->set_rules("panchayth","panchayth",'required');
+		$this->load->library("form_validation");
+		$this->form_validation->set_rules("name","name",'required');
+		$this->form_validation->set_rules("district","district",'required');
+		$this->form_validation->set_rules("batch","batch",'required');
+		$this->form_validation->set_rules("course","course",'required');
+		$this->form_validation->set_rules("gender","gender",'required');
+		$this->form_validation->set_rules("kudumbasree","kudumbasree",'required');
+		$this->form_validation->set_rules("aplbpl","aplbpl",'required');
+		$this->form_validation->set_rules("religion","religion",'required');
+		$this->form_validation->set_rules("category","category",'required');
+		$this->form_validation->set_rules("caste","caste",'required');
+		$this->form_validation->set_rules("mgnreg","mgnreg",'required');
+		$this->form_validation->set_rules("panchayth","panchayth",'required');
 
-if($this->form_validation->run())
-{
+		if($this->form_validation->run())
+		{
 
-$cid=$this->input->post("course");
-$pid=$this->input->post("batch");
-$disid=$this->input->post("district");
-$dist=$this->input->post("dist");
-$coursename=$this->input->post("coursename");
+		$cid=$this->input->post("course");
+		$pid=$this->input->post("batch");
+		$disid=$this->input->post("district");
+		$dist=$this->input->post("dist");
+		$coursename=$this->input->post("coursename");
 
-$this->load->model('Mainmodel');
-$a=array("name"=>$this->input->post("name"),
-"gender"=>$this->input->post("gender"),
-"kudumbasree"=>$this->input->post("kudumbasree"),
-"aplbpl"=>$this->input->post("aplbpl"),
-"religion"=>$this->input->post("religion"),
-"caste"=>$this->input->post("caste"),
-"category"=>$this->input->post("category"),
-"mgnreg"=>$this->input->post("mgnreg"),
-"panchayath"=>$this->input->post("panchayth"),
-"cid"=>$cid,
-"pid"=>$pid,
-"disid"=>$disid);
-$res=$this->Mainmodel->target($cid,$pid,$disid);
-if($res>0)
-{
-$this->Mainmodel->studentsadd($a);
-$this->Mainmodel->distargetrem($cid,$pid,$disid);
-$this->Mainmodel->coursetarget($cid);
-$this->Mainmodel->projecttarget($pid);
-redirect(base_url().'Main/register1_ddu');
+		$this->load->model('Mainmodel');
+		$a=array("name"=>$this->input->post("name"),
+		"gender"=>$this->input->post("gender"),
+		"kudumbasree"=>$this->input->post("kudumbasree"),
+		"aplbpl"=>$this->input->post("aplbpl"),
+		"religion"=>$this->input->post("religion"),
+		"caste"=>$this->input->post("caste"),
+		"category"=>$this->input->post("category"),
+		"mgnreg"=>$this->input->post("mgnreg"),
+		"panchayath"=>$this->input->post("panchayth"),
+		"cid"=>$cid,
+		"pid"=>$pid,
+		"disid"=>$disid);
+		$res=$this->Mainmodel->target($cid,$pid,$disid);
+		if($res>0)
+		{
+		$this->Mainmodel->studentsadd($a);
+		$this->Mainmodel->distargetrem($cid,$pid,$disid);
+		$this->Mainmodel->coursetarget($cid);
+		$this->Mainmodel->projecttarget($pid);
+		redirect(base_url().'Main/register1_ddu');
 
-}
-else
-{
-  echo "<h1>no more seat available</h1>";
-  echo "<a href='register1_ddu'>back</a>";
- 
-}
-// $cname=$this->Mainmodel->cnamefetch($cid);
-// $distname=$this->Mainmodel->distnamefetch($disid);
-// if($coursename==$cname && $dist==$distname)
-// {
-// $this->Mainmodel->updatetarget();
-
-// }
-
-}
-}
-else
-        {
-             redirect(base_url().'Main/index');
-        }
-}
+		}
+		else
+		{
+		  echo "<h1>no more seat available</h1>";
+		  echo "<a href='register1_ddu'>back</a>";
+		 
+		}
+		}
+		}
+		else
+		        {
+		             redirect(base_url().'Main/index');
+		        }
+		}
 
 
 /*******************
@@ -695,18 +725,24 @@ else
   {
      if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
     {
-  $this->load->model('Mainmodel');
-$data['n']=$this->Mainmodel->fetch_course();
-$data['n1']=$this->Mainmodel->fetch_project();
-$data['n2']=$this->Mainmodel->fetch_district();
-$this->load->view('adddistrict_target',$data);
-}
-else
-        {
-             redirect(base_url().'Main/index');
-        }
-  }
- 
+			$this->load->model('Mainmodel');
+			$data['n']=$this->Mainmodel->fetch_course();
+			$data['n1']=$this->Mainmodel->fetch_project();
+			$data['n2']=$this->Mainmodel->fetch_district();
+			$this->load->view('adddistrict_target',$data);
+			}
+			else
+			        {
+			             redirect(base_url().'Main/index');
+			        }
+			  }
+
+/*******************
+*@function name:insertdistrict_target
+*@function:inserting district target
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/
   public function insertdistrict_target()
   {
      if($_SESSION['logged_in']==true && $_SESSION['utype']=='1')
@@ -773,7 +809,7 @@ public function viewtargetad()
         $data['n']=$this->Mainmodel->viewdistarget();
         $data['n1']=$this->Mainmodel->viewprotarget();
         $data['n2']=$this->Mainmodel->viewcoursetarget();
-        $this->load->view('viewtarget',$data);
+        $this->load->view('viewtargetadmin',$data);
         }
         else
         {
@@ -839,27 +875,6 @@ public function viewtargetad()
 
 				}
 
-
-/*******************
-*@function name:chartview
-*@function:viewing chart
-*@Author:keerthi
-*@date:06/03/2021
-*******************/
-				public function chartview()
-				{
-				  if($_SESSION['logged_in']==true && $_SESSION['usertype']=='0')
-				        {
-				$this->load->model('Mainmodel');
-				$data['n']=$this->Mainmodel->chart();
-				$this->load->view('chartview',$data);
-				}
-				        else
-				        {
-				             redirect(base_url().'Main/staff_dashboard_ddu');
-				        }
-
-				}
 /*******************
 *@function name:logout
 *@function:logging out from the session
