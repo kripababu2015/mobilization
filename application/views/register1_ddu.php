@@ -11,14 +11,14 @@
             <!---custom style---->
              <link rel="stylesheet" href="../css/style.css">
     </head>
+    <!---nav starts-->
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url()?>Main/staff_dashboard_ddu"> Home</a>  
-           
-           
-      </div>
+        <a class="navbar-brand" href="<?php echo base_url()?>Main/staff_dashboard_ddu"> Home</a>
+       </div>
     </nav>
+    <!---nav ends--->
 <body>
     <div class="content mt-5">
         <div class="container-fluid">
@@ -195,14 +195,10 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">MGNREG  </label>
-                          <!-- <div class="form-group">
-                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                            <textarea class="form-control" rows="5"></text area>--->
                               <select name="mgnreg" class="form-control">
                                 <option value=""></option>
                                 <option value="Yes" class="text-dark">Yes</option>
-                                <option value="No">No</option>
-                                
+                                <option value="No">No</option>    
                               </select>
                          </div>
                         </div>

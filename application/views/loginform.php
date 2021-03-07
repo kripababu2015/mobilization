@@ -54,7 +54,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="row m-0 h-100">
         <div class="col p-0 text-center d-flex justify-content-center align-items-center display-none">

@@ -11,18 +11,26 @@
             <!---custom style---->
     <link rel="stylesheet" href="../css/style.css">
     </head>
+    <!--nav starts---->
     <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
-           
-           
-      </div>
+    	<div class="container">
+     		 <div class="navbar-header">
+     		 <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
+     		</div>
+     	</div>
     </nav>
+    <!----nav ends--->
+      <!-- /*******************
+*@function name:adddistirct
+*@function:add district  view page
+*@Author:Kripa Babu
+*@date:05/03/2021
+*******************/-->
 <body>
-	<div class="container py-5 w-50">
-	<form action ="<?php echo base_url()?>Main/insert_district" method="post" >
 
+	<div class="container py-5 w-50">
+		<!--form section--->
+	<form action ="<?php echo base_url()?>Main/insert_district" method="post" >
 		<fieldset class="form-control">
 			<h2 class="text-center">Add District</h2>
 			
@@ -50,10 +58,9 @@
 				<input type="submit" name="submit" value="Add" class="form-control btn btn-primary w-25 ">
 			</div>
 		</fieldset>
-
-	</div>
+		</div>
 	</form>
-
+<!---from section ends--->
 
 </body>
 </html>

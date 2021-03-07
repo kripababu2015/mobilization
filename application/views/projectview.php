@@ -11,14 +11,13 @@
             <!---custom style---->
             <link rel="stylesheet" href="../css/style.css">
     </head>
+    <!---nav starts--->
     <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
-           
-           
-      </div>
+      <div class="container">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>       </div>
     </nav>
+    <!--nav ends-->
 <body>
    <!-- /*******************
 *@function name:projectview

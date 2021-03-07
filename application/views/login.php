@@ -2,9 +2,6 @@
 <html>
 <head>
 	<title>Mobilization</title>
-	
-
-
 <meta charset=utf-8>
             <meta name="viewport" content="width=device-width,initial-scale=1">
             <!---Fontawesome--->
@@ -298,16 +295,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 </style>
 <body>
-
+<!---nav starts--->
 	<nav class="navbar navbar-expand-lg top1 front">
         <div class="container">
-            
                 <ul class="navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link  text-dark">Home</a></li>
          </div>
     </div>
 </nav>
-
+<!--nav ends--->
 	<h1>Login</h1>
 	
 	<form method="post" action="<?php echo base_url()?>main/logincheck">

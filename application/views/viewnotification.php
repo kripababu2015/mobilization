@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>view notification </title>
+  <title>mobilization </title>
   <meta charset=utf-8>
             <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -12,14 +12,14 @@
             <!---custom style---->
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/index_style.css');?>" media="all"/><link rel="stylesheet" href="../css/style.css">
     </head>
+    <!---nav starts--->
     <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+      <div class="container">
       <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
-           
-           
+      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>        
       </div>
     </nav>
+    <!--nav ends-->
 <!-- /*******************
 *@function name:viewingnotification
 *@function:viewing notification send by staff

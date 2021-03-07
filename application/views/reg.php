@@ -3,8 +3,6 @@
 <head>
 	<title>LOGIN</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo  base_url('/css/login.css');?>" media="all"/>
-	
-	
 	<meta charset=utf-8>
             <meta name="viewport" content="width=device-width,initial-scale=1">
             <!---Fontawesome--->
@@ -292,10 +290,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   cursor: pointer;
 }
 
-
-
-
-
 </style>
 <body>
 
@@ -305,31 +299,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <ul class="navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link  text-dark">Home</a></li>
               <!--   <li class="nav-item"><a href="<?php echo base_url()?>main1/register" class="nav-link  text-dark">Register</a></li>
-                <li class="nav-item"><a href="<?php echo base_url()?>main1/login" class="nav-link  text-dark">Login</a></li> -->
-                
-            
+                <li class="nav-item"><a href="<?php echo base_url()?>main1/login" class="nav-link  text-dark">Login</a></li> --> 
         </div>
     </div>
 </nav>
-
-
 	<form action="<?php echo base_url()?>main/regi" method="post">
-
-		
-		<div class="padding log">
-			
-			
-			
+	<div class="padding log">
 			<h1 class="white font p-t" >REGISTRATION</h1><br>
 			<input class="txt" type="text" name="name" placeholder="E-mail/phone number/username" required maxlength="25" pattern="[a-zA-Z]+"><br><br>
       <input type="email" name="email" id="email"><span id="email_result"><br><br>
 			<input type="password" name="password"  required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"><br><br>
 			<input type="submit" name="submit" value="login" class="b-log"><br>
-
-			 
-
-			</div>
-			
+			</div>		
 		</div>	
 	</form>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 

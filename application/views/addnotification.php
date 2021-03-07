@@ -12,18 +12,15 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <!---custom style---->
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/index_style.css');?>" media="all"/>
-
-
 <link rel="stylesheet" href="../css/style.css">
     </head>
+    <!--nav starts--->
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url()?>Main/staff_dashboard_ddu"> Home</a>  
-           
-           
-      </div>
+      <a class="navbar-brand" href="<?php echo base_url()?>Main/staff_dashboard_ddu"> Home</a>   </div>
     </nav>
+    <!--nav ends-->
 <!-- /*******************
 *@function name:addnotification
 *@function:add notification to admin

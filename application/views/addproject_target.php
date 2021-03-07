@@ -4,7 +4,6 @@
   <title>Mobilization</title>
   <meta charset=utf-8>
             <meta name="viewport" content="width=device-width,initial-scale=1">
-
              <!---Fontawesome--->
             <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
             <!---Bootstrap5----->
@@ -12,15 +11,14 @@
             <!---custom style---->
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/index_style.css');?>" media="all"/>
             <link rel="stylesheet" href="../css/style.css">
-            <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>  
-           
-           
-      </div>
+        <!--nav starts--->
+        <nav class="navbar navbar-default navbar-fixed-top">
+              <div class="container">
+               <div class="navbar-header">
+              <a class="navbar-brand" href="<?php echo base_url()?>Main/dashboard_ddu"> Home</a>>
+        </div>
     </nav>
-
+      <!--nav ends-->
 </head>
 <body>
 <!-- /*******************

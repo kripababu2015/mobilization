@@ -52,6 +52,7 @@
                   <a class="nav-link" href="<?php echo base_url()?>Main/projectview">
                    <i class="material-icons">bubble_chart</i>
                     <p>Add Project-Target</p>
+         
                   </a>
                   
                 </li>
@@ -78,42 +79,21 @@
               <p>Add District</p>
             </a>
           </li>
-          <!-- <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Add Batch</p>
-            </a>
-          </li> -->
+         
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo base_url()?>Main/studentview">
               <i class="material-icons">person</i>
               <p>Candidate Details</p>
             </a>
           </li>
-           <!-- <li class="nav-item ">
-            <a class="nav-link" href="">
-              <i class="material-icons">location_ons</i>
-              <p>Home</p>
-            </a>
-          </li>  -->
-          <!-- <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
+           <
+           <li class="nav-item ">
+            <a class="nav-link" href="<?php echo base_url()?>Main/changecount">
               <i class="material-icons">notifications</i>
-              <p>Notifications</p>
+              <p>changecount</p>
             </a> 
-          </li>----->
-          <!-- <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-              <i class="material-icons">language</i>
-              <p>RTL Support</p>
-            </a>
-          </li> -->
-          <!-- <li class="nav-item active-pro ">
-            <a class="nav-link" href="./upgrade.html">
-              <i class="material-icons">unarchive</i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li> -->
+          </li>
+       
         </ul>
       </div>
     </div>
