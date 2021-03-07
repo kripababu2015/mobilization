@@ -640,22 +640,5 @@ $this->db->select('*');
 		{
 		$this->db->insert("distarget",$n);
 		}
-/*******************
-*@function name:chart
-*@function:chart loading from db
-*@Author:keerthi
-*@date:06/03/2021
-*******************/
-
-			public function chart()
-			{
-			$this->db->select('*');
-			    // $this->db->join('project_tbl','project_tbl.pid=distarget.pid','inner');
-			    //  $this->db->join('course_tbl','course_tbl.cid=distarget.cid','inner');
-			    //  $this->db->join('districtname_tbl','districtname_tbl.disid=distarget.disid','inner');
-			    $qry=$this->db->get("distarget");
-			    return $qry;
-
-			}
 
      }
